@@ -1,8 +1,0 @@
-print("enter any list:")
-x=input()
-print("1")
-y=input()
-print("2")
-z=input()
-print("3")
-print("the list is "+x +y +z)
