@@ -1,18 +1,19 @@
-import request 
+import requests
+from pprint import  *
 
 city=input("enter city name")
 
-url=""
+url= "https://api.openweathermap.org/data/2.5/weather?q={}&appid=c3496ec82796d53908eb44fff87eac32&unit=metrics".format(city)
 
-res=request.get(url)
+res=requests.get(url)
 
 data=res.json()
-
+pprint(data)
 temp=data['main']['temp']
 wind_speed=data['wind']['speed']
 
-latitude=data['coard']['lat']
-longitude=data['coard']['lon']
+latitude=data['coord']['lat']
+longitude=data['coord']['lon']
 
 description=data['weather'][0]['description']
 
