@@ -83,7 +83,7 @@ entry_city.grid(row=0, column=3)
 enter_lat = Entry(root, width=30)
 enter_lat.grid(row=1, column=3)
 enter_lon = Entry(root, width=30)
-enter_lon.grid(row=1, column=4)
+enter_lon.grid(row=1, column=4,padx=4)
 b = Button(root, text="Show Me!!", width=15, bg='grey', fg='black', command=show)
 b.grid(row=2, column=3)
 
