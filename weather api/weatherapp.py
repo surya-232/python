@@ -2,6 +2,8 @@ from pprint import *
 import tkinter
 import requests
 from tkinter import *
+import datetime
+from datetime import date
 
 root = Tk()
 root.geometry("900x700")
@@ -55,6 +57,7 @@ def show():
     longitude = data['coord']['lon']
     name = data ['name']
     description = data['weather'][0]['description']
+    country = data['sys']['country']
 
     print('Temperature : {} degree calcius'.format(temp))
     print('Wind Speed : {} m/s'.format(wind_speed))
@@ -63,6 +66,12 @@ def show():
     print('description : {}'.format(description))
     print('pressure : {}'.format(pressure))
     print('humidity : {}'.format(humidity))
+    print('Country:{}'.format(country))
+    current_date = datetime.date.today()
+    print(current_date)
+
+
+    date.config(text=current_date,font='bold 20')
     mi.config(text=temp)
     mi1.config(text=wind_speed)
     mi2.config(text=latitude)
@@ -71,9 +80,10 @@ def show():
     mi5.config(text=pressure)
     mi6.config(text=humidity)
     mi7.config(text=name)
-    ci.config(text=entry_city.get())
+    #ci.config(text=entry_city.get())
 
-
+date=Label(root,text="",font=30,bg='#%02x%02x%02x' % (64, 204, 208))
+date.grid(row=3,column=1,pady=4)
 label_city = Label(root, text="Search Weather of your City Here : - ", width=30, font=90)
 label_city.grid(row=0, columnspan=2, pady=6)
 label_city = Label(root, text="Search Weather For Latitude and Longitude : - ", width=40, font=90)
@@ -87,8 +97,8 @@ enter_lon.grid(row=1, column=4,padx=4)
 b = Button(root, text="Show Me!!", width=15, bg='grey', fg='black', command=show)
 b.grid(row=2, column=3)
 
-ci = Label(root, text="You Search For :- ")
-ci.grid(row=3, column=0)
+# ci = Label(root, text="You Search For :- ")
+# ci.grid(row=3, column=0)
 
 li = Label(root, text="  The Temperature of Required City is : - ", font='bold 15')
 li.grid(row=4, sticky=E)
@@ -107,8 +117,8 @@ l7.grid(row=10, sticky=E)
 l8 = Label(root, text="  The Area you Searched is : - ", font='bold 15')
 l8.grid(row=11, sticky=E)
 
-ci = Label(root, text=" -- ", font='bold 20')
-ci.grid(row=3, column=1)
+# ci = Label(root, text=" -- ", font='bold 20')
+# ci.grid(row=3, column=1)
 mi = Label(root, text=" -- ")
 mi.grid(row=4, column=1)
 mi1 = Label(root, text=" -- ")
@@ -125,4 +135,6 @@ mi6 = Label(root, text=" -- ")
 mi6.grid(row=10, column=1)
 mi7 = Label(root, text=" -- ", font='bold 20')
 mi7.grid(row=11, column=1)
+country=Label(root,text="",font=15)
+country.grid(row=13,column=0)
 root.mainloop()
